@@ -1,113 +1,74 @@
-import Image from 'next/image'
+import { ListOfUtilities } from "@/components/ListOfUtilities"
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className="flex flex-col items-center justify-between h-full w-full">
+      <section className="flex items-center gap-12 py-14 px-10 w-full">
+        <div className="flex flex-col items-center justify-center gap-8 w-1/2">
+          <h2 className="font-display text-3xl font-extrabold text-white mr-44 xl:leading-[80px] sm:text-5xl xl:text-7xl">
+            Create utilities for 
+            <span className="text-cyan-300">
+              {' '}add to web{' '}
+            </span>
+            in diferent
+            <span className="text-green-300">{' '}library and framework{' '}</span>
+            UX
+          </h2>
+          <div className="flex items-center justify-start gap-4 mt-6 w-full">
+            <Link href='/list-utilities' className="inline-flex items-center justify-center px-8 py-4 rounded-lg text-gray-50 bg-tranparent border-2 border-gray-50 hover:border-[#EE81C3] hover:opacity-90">
+              <span className="font-medium text-2xl">List utilities</span>
+            </Link>
+            <Link href='/create-utility' className="inline-flex items-center justify-center px-8 py-4 rounded-lg text-gray-50 bg-[#EE81C3] border-2 border-[#EE81C3] hover:opacity-90">
+              <span className="font-medium text-2xl">Create new utility</span>
+            </Link>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div className="relative -mx-6 mt-6 overflow-hidden p-4 sm:-mx-8 sm:p-8 md:p-10 lg:mt-0 lg:h-[48rem] lg:w-1/2 lg:rounded-l-2xl lg:p-8">
+          <svg className="absolute top-0 left-0 h-full xl:rounded-3xl" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 1920 1080">
+            <g clipPath="url(#clip0_230:73)">
+              <path fill="url(#paint0_linear_230:73)" d="M0 0H1920V1080H0z">
+              </path>
+              <path fill="url(#paint1_linear_230:73)" d="M664.307 809.4c-7.074-90.56-120.853-580.729-176.858-814.494l152.54-182.225c-238.022-21.168-727.33-60.742-780.388-49.698-66.322 13.805-79.586 563.243-99.483 668.161-15.917 83.934 146.645 574.286 229.916 808.976 135.592 7.36 416.06 17.67 453.2 0 46.426-22.09 229.916-317.519 221.073-430.72z">
+              </path>
+              <path fill="url(#paint2_linear_230:73)" d="M174.662 803.768C309.297 634.216 292.388 197.274 267.105-.002c14.222-14.663 45.984-47.187 59.258-59.983C342.955-75.981 30.073-149.96 6.369-147.96-12.593-146.361-45.778 429.875-60 717.792c22.123 99.305 100.028 255.527 234.662 85.976z"></path><path fill="url(#paint3_linear_230:73)" d="M867.369 535.857c-105.199 62.977-57.22 440.793-48.583 564.173H2019.11l62.83-920.49c-64.77-201.867-257.55-510.307-510.44-129.13-252.89 381.176-213.12 906.695-305.1 963.99-109.48 68.19-293.833-541.52-399.031-478.543z">
+              </path>
+            </g>
+            <defs>
+              <linearGradient id="paint0_linear_230:73" x1="680.162" x2="1632.05" y1="577.98" y2="236.725" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#EB6899">
+                </stop>
+                <stop offset="0.243" stopColor="#F090AE">
+                </stop>
+                <stop offset="1" stopColor="#F6BDC5">
+                </stop>
+              </linearGradient>
+              <linearGradient id="paint1_linear_230:73" x1="212.213" x2="586.594" y1="-18.898" y2="1121.55" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#F892A2">
+                </stop>
+                <stop offset="1" stopColor="#F4768C">
+                </stop>
+              </linearGradient>
+              <linearGradient id="paint2_linear_230:73" x1="297.919" x2="-16.453" y1="155.953" y2="236.012" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#F6728F"></stop>
+                <stop offset="1" stopColor="#F24F70"></stop>
+              </linearGradient>
+              <linearGradient id="paint3_linear_230:73" x1="866.073" x2="1903.93" y1="1072.4" y2="300.803" gradientUnits="userSpaceOnUse">
+                <stop offset="0.191" stopColor="#D45DA2"></stop>
+                <stop offset="0.415" stopColor="#9D58C7"></stop>
+                <stop offset="0.618" stopColor="#8F7DEC"></stop>
+                <stop offset="0.978" stopColor="#C1BAF4"></stop>
+              </linearGradient>
+              <clipPath id="clip0_230:73">
+                <path fill="#fff" d="M0 0H1920V1080H0z">
+                </path>
+              </clipPath>
+            </defs>
+          </svg>
+          <img src='/img/previewHighliting.png' alt='preview' className='absolute top-2 left-12 rounded-xl object-cover' />
+        </div>
+      </section>
+      <ListOfUtilities />
     </main>
   )
 }
