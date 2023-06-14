@@ -1,9 +1,7 @@
 import { kv } from '@vercel/kv'
 
-export async function POST(request: Request) {
+export async function POST (request: Request) {
   const { title, description, use_case, code, language } = await request.json()
-
-  console.log({ title, description, use_case, code, language })
 
   if (!title || !description || !use_case || !code || !language) {
     return new Response('Missing required fields', { status: 400 })
@@ -20,5 +18,4 @@ export async function POST(request: Request) {
     console.error(error)
     return new Response('Internal error', { status: 500 })
   }
-
 }
