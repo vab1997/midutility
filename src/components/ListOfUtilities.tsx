@@ -1,8 +1,12 @@
-import { useGetUtilities } from '@/hooks/useGetUtilities'
+import { useGetRangeUtilities } from '@/hooks/useGetRangeUtilities'
 import { Utility } from './Utility'
+import { getUtilityHtmlCssJs } from '@/services/clientService'
 
 export async function ListOfUtilities () {
-  const listUtilities = await useGetUtilities()
+  const listUtilities = await useGetRangeUtilities({ limit: 10 })
+
+  const listSup = await getUtilityHtmlCssJs()
+  console.log(listSup)
 
   if (typeof listUtilities !== 'object') {
     return (

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Highligter } from '@/components/Highligther'
 import { ListOfUtilities } from '@/components/ListOfUtilities'
 import { codeExample } from '@/utils/constant'
+import { SelectUtility } from '@/components/SelectCreateUtility'
 
 export default function Home () {
   return (
@@ -21,9 +22,10 @@ export default function Home () {
             <Link href='/list-utilities' className='inline-flex items-center justify-center px-8 py-4 rounded-lg text-gray-50 bg-tranparent border-2 border-gray-50 hover:border-[#EE81C3] hover:opacity-90'>
               <span className='font-medium text-2xl'>List utilities</span>
             </Link>
-            <Link href='/create-utility' className='inline-flex items-center justify-center px-8 py-4 rounded-lg text-gray-50 bg-[#EE81C3] border-2 border-[#EE81C3] hover:opacity-90'>
+            <SelectUtility />
+            {/* <Link href='/create-utility' className='inline-flex items-center justify-center px-8 py-4 rounded-lg text-gray-50 bg-[#EE81C3] border-2 border-[#EE81C3] hover:opacity-90'>
               <span className='font-medium text-2xl'>Create new utility</span>
-            </Link>
+            </Link> */}
           </div>
         </div>
         <div className='relative -mx-6 mt-6 overflow-hidden p-4 sm:-mx-8 sm:p-8 md:p-10 lg:mt-0 lg:h-[48rem] lg:w-1/2 lg:rounded-l-2xl lg:p-8'>

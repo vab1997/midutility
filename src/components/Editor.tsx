@@ -3,10 +3,20 @@ import { useEffect, useState } from 'react'
 import Editor, { useMonaco } from '@monaco-editor/react'
 import themeCustom from '@/utils/oneDark.json'
 import { Loading } from '@/components/icons/Loading'
-import { JsIcon } from './icons/JsIcon'
-import { TsIcon } from './icons/TsIcon'
+import { JsIcon } from '@/components/icons/JsIcon'
+import { TsIcon } from '@/components/icons/TsIcon'
+import { HtmlIcon } from '@/components/icons/HtmlIcon'
+import { CssIcon } from '@/components/icons/CssIcon'
+import { DEFAULT_VALUE } from '@/utils/constant'
 
-export function EditorMonaco ({ updateValues }: { updateValues: ({ code, language }: { code: string, language: string }) => void }) {
+interface EditorMonacoProps {
+  updateValues: ({ code, language }: { code: string, language: string }) => void
+  lang: string
+  isJSX?: boolean
+  isHook?: boolean
+}
+
+export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonacoProps) {
   const [code, setCode] = useState<string | undefined>()
   const [language, setLanguage] = useState<string>('javascript')
   const monaco = useMonaco()
@@ -24,8 +34,13 @@ export function EditorMonaco ({ updateValues }: { updateValues: ({ code, languag
   }, [monaco])
 
   useEffect(() => {
-    updateValues({ code: code ?? '', language })
+    updateValues({ code: code ?? '', language: lang })
   }, [code, language])
+
+  let ValueLang
+  if (isJSX) ValueLang = 'javascriptJSX'
+  else if (isHook) ValueLang = 'CustomHook'
+  else ValueLang = lang
 
   const handleClick = () => {
     language === 'javascript'
@@ -33,25 +48,31 @@ export function EditorMonaco ({ updateValues }: { updateValues: ({ code, languag
       : setLanguage('javascript')
   }
 
-  // console.log(code)
-  // console.log(language)
+  const IconEditor = () => {
+    if (lang === 'javascript') {
+      return (
+        <button className='flex gap-4 items-center justify-center font-medium text-white rounded' onClick={handleClick}>
+          <JsIcon language={language} />
+          <TsIcon language={language} />
+        </button>
+      )
+    }
+    if (lang === 'html') return <HtmlIcon />
+    if (lang === 'css') return <CssIcon />
+  }
 
   return (
-    <div className='relative flex items-center justify-between bg-[#14151A] rounded-2xl py-4 px-2 h-full w-full'>
-      {(monaco != null) && (
-        <div className='flex gap-2 items-center justify-center absolute top-4 right-10 z-10'>
-          <button className='flex gap-4 items-center justify-center font-medium text-white rounded' onClick={handleClick}>
-            <JsIcon language={language} />
-            <TsIcon language={language} />
-          </button>
+    <div className='relative flex items-center justify-between bg-[#14151A] rounded-2xl p-2 h-full w-full'>
+      {(monaco !== null) && (
+        <div className='inline-flex gap-2 items-center justify-center absolute bottom-2 right-10 z-10'>
+          <IconEditor />
         </div>
       )}
       <Editor
-        height='80vh'
-        defaultLanguage='javascript'
-        defaultValue={['function hello() {', '\tconsole.log("Hello world!");', '}'].join('\n')}
+        height='60vh'
+        defaultLanguage={lang}
+        defaultValue={DEFAULT_VALUE[ValueLang as keyof typeof DEFAULT_VALUE]}
         className='bg-[#14151A] h-full w-full'
-        language={language}
         theme='vs-dark'
         loading={<Loading width={48} height={48} />}
         onChange={(value: string | undefined) => setCode(value)}

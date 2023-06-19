@@ -26,7 +26,7 @@ export function Utility ({ id, title, description }: { title: string, id: string
         </Link>
       </header>
       <div className='px-2'>
-        <p className='text-[#14151A]'>{description}</p>
+        <p className='text-[#14151A] truncate'>{description}</p>
       </div>
       <footer className='flex items-center justify-end mt-2 px-2 w-full'>
         <p className='text-[#14151A] font-medium text-sm italic'>By @vab1997</p>

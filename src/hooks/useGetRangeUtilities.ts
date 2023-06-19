@@ -1,13 +1,11 @@
-import { kv } from '@vercel/kv'
 import { nonNullable } from '@/utils'
+import { getAllUtilities, getSingleUtility } from '@/services/utilityAdm'
 
-import { Utility } from '@/types/type.d'
-
-export async function useGetUtilities () {
+export async function useGetRangeUtilities ({ limit }: { limit?: number }) {
   try {
-    const listKeysUtilities = (await kv.keys('*')).splice(0, 10)
+    const listKeysUtilities = (await getAllUtilities()).splice(0, limit)
     const listUtilities = await Promise.all(listKeysUtilities.map(async (key) => {
-      const value = await kv.get<Utility | null>(key)
+      const value = await getSingleUtility({ idUtility: key })
       if (value == null) return null
 
       const { title, description, use_case, code, language, timestamp } = value
