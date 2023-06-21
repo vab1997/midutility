@@ -1,16 +1,6 @@
-import { getSingleUtility } from '@/services/utilityAdm'
+import { getSingleUtilityHtmlCssJs } from '@/services/clientService'
 
 export async function useGetUtility ({ idUtility }: { idUtility: string }) {
-  try {
-    const utility = await getSingleUtility({ idUtility })
-
-    if (utility == null) {
-      return 'Utility not found'
-    }
-
-    return utility
-  } catch (error) {
-    console.error(error)
-    return 'Error get utility'
-  }
+  const utility = await getSingleUtilityHtmlCssJs({ utility_id: idUtility })
+  return utility
 }
