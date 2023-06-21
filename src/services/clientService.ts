@@ -81,15 +81,15 @@ export async function getUtilityHtmlCssJs ({ limit }: { limit?: number }) {
 }
 
 export async function getSingleUtilityHtmlCssJs ({ utility_id }: { utility_id: string }) {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('utility')
     .select(`
       id,
       title,
       description,
       useCase,
+      created_at,
       utility_html_css_js (
-        utility_id,
         codeHtml,
         codeCss,
         codeJs,
@@ -99,5 +99,25 @@ export async function getSingleUtilityHtmlCssJs ({ utility_id }: { utility_id: s
     .eq('id', `${utility_id}`)
     .limit(1)
 
-  return data
+  if (error) return null
+
+  const utility = data.map((utility) => {
+    const { id, title, description, useCase, created_at, utility_html_css_js } = utility
+    if (Array.isArray(utility_html_css_js)) return null
+    const { codeHtml, codeCss, codeJs, codeTs } = utility_html_css_js
+
+    return {
+      id,
+      title,
+      description,
+      useCase,
+      codeHtml,
+      codeCss,
+      codeJs,
+      codeTs,
+      timestamp: created_at
+    }
+  })
+
+  return utility[0]
 }
