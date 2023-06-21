@@ -19,10 +19,19 @@ export function FormRedesing () {
   const route = useRouter()
 
   const updateValues = ({ code, language }: { code: string, language: string }) => {
-    if (language === 'html') setCodeHtml(code)
-    if (language === 'css') setCodeCss(code)
-    if (language === 'javascript') setCodeJs(code)
-    if (language === 'typescript') setCodeTs(code)
+    if (language === 'html') return setCodeHtml(code)
+    if (language === 'css') return setCodeCss(code)
+
+    if (language === 'typescript') {
+      setCodeTs(code)
+      setCodeJs('')
+      return
+    }
+
+    if (language === 'javascript') {
+      setCodeJs(code)
+      setCodeTs('')
+    }
   }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -34,10 +43,6 @@ export function FormRedesing () {
     const title = formData.get('title')
     const description = formData.get('description')
     const use_case = formData.get('use_case')
-    const codeHtml = formData.get('codeHtml')
-    const codeCss = formData.get('codeCss')
-    const codeJs = formData.get('codeJs')
-    const codeTs = formData.get('codeTs')
 
     if (!title || !description || !use_case) {
       toast.error('All fields are required')
@@ -50,10 +55,10 @@ export function FormRedesing () {
       title: String(title),
       description: String(description),
       useCase: String(use_case),
-      codeHtml: String(codeHtml),
-      codeCss: String(codeCss),
-      codeJs: String(codeJs),
-      codeTs: String(codeTs)
+      codeHtml,
+      codeCss,
+      codeJs,
+      codeTs
     })
 
     if (res) {
@@ -90,11 +95,6 @@ export function FormRedesing () {
             />
           </div>
           <InputForm req label='Use case' name='use_case' type='text' placeholder='ej: youtube.com/shorts/VKAt8JMlqho' />
-
-          <InputForm label='code Html' name='codeHtml' type='hidden' value={codeHtml} />
-          <InputForm label='code Css' name='codeCss' type='hidden' value={codeCss} />
-          <InputForm label='code JavaScript' name='codeJs' type='hidden' value={codeJs} />
-          <InputForm label='code TypeScript' name='codeTs' type='hidden' value={codeTs} />
 
           <div className='absolute z-10 left-[28.5rem] bottom-[10.8rem] ml-1 border border-dashed border-gray-300 w-[2px] h-6 opacity-50' />
         </div>
