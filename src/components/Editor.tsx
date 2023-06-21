@@ -18,7 +18,7 @@ interface EditorMonacoProps {
 
 export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonacoProps) {
   const [code, setCode] = useState<string | undefined>()
-  const [language, setLanguage] = useState<string>('javascript')
+  const [language, setLanguage] = useState<string>(lang)
   const monaco = useMonaco()
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
   }, [monaco])
 
   useEffect(() => {
-    updateValues({ code: code ?? '', language: lang })
+    updateValues({ code: code ?? '', language })
   }, [code, language])
 
   let ValueLang
@@ -70,10 +70,11 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
       )}
       <Editor
         height='60vh'
-        defaultLanguage={lang}
+        defaultLanguage={language}
         defaultValue={DEFAULT_VALUE[ValueLang as keyof typeof DEFAULT_VALUE]}
         className='bg-[#14151A] h-full w-full'
         theme='vs-dark'
+        language={language}
         loading={<Loading width={48} height={48} />}
         onChange={(value: string | undefined) => setCode(value)}
         options={
