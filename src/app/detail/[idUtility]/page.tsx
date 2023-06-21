@@ -8,15 +8,15 @@ export default async function DetailUtility ({ params }: { params: { idUtility: 
   const { idUtility } = params
   const utility = await useGetUtility({ idUtility })
 
-  if (typeof utility !== 'object') {
+  if (!utility) {
     return (
       <div className='flex items-center justify-center w-full h-full'>
-        <h1 className='text-6xl text-[#EE81C3] font-bold'>{utility}</h1>
+        <h1 className='text-6xl text-[#EE81C3] font-bold'>Not found utility</h1>
       </div>
     )
   }
 
-  const { code, description, language, timestamp, title, use_case } = utility
+  const { title, description, useCase, timestamp, codeHtml, codeCss, codeJs, codeTs } = utility
 
   return (
     <main>
@@ -29,20 +29,30 @@ export default async function DetailUtility ({ params }: { params: { idUtility: 
             </div>
             <div className='flex items-center justify-between w-full mt-2'>
               <div className='text-gray-50'>
-                <a href={use_case} className='italic text-gray-50 hover:underline-offset-4 hover:text-[#EE81C3]' target='_blank' rel='noreferrer nopener'>
+                <a href={useCase ?? ''} className='italic text-gray-50 hover:underline-offset-4 hover:text-[#EE81C3]' target='_blank' rel='noreferrer nopener'>
                   View an example of use
                 </a>
               </div>
               <div className='flex items-center justify-center gap-1'>
-                <time className='text-gray-50 font-medium italic'>Created {formatDate(timestamp)}</time>
+                {timestamp !== null && <time className='text-gray-50 font-medium italic'>Created {formatDate(timestamp)}</time>}
                 <span className='text-gray-50 font-medium italic'>by midudev</span>
               </div>
             </div>
           </header>
           <div className='relative py-2 w-full'>
-            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>{language}</span>
-            <Highligter codeString={code} language={language} />
-            {code && <ButtonCopyClipboard code={code} />}
+            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>HTML</span>
+            <Highligter codeString={codeHtml ?? ''} language='html' />
+            {codeHtml && <ButtonCopyClipboard code={codeHtml} />}
+          </div>
+          <div className='relative py-2 w-full'>
+            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>CSS</span>
+            <Highligter codeString={codeCss ?? ''} language='css' />
+            {codeCss && <ButtonCopyClipboard code={codeCss} />}
+          </div>
+          <div className='relative py-2 w-full'>
+            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>JavaScript</span>
+            <Highligter codeString={codeJs ?? codeTs} language={codeJs ? 'javascript' : 'typescript'} />
+            {codeJs && <ButtonCopyClipboard code={codeJs} />}
           </div>
         </div>
       </section>
