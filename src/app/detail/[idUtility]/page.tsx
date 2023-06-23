@@ -50,8 +50,8 @@ export default async function DetailUtility ({ params }: { params: { idUtility: 
             {codeCss && <ButtonCopyClipboard code={codeCss} />}
           </div>
           <div className='relative py-2 w-full'>
-            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>JavaScript</span>
-            <Highligter codeString={codeJs ?? codeTs} language={codeJs ? 'javascript' : 'typescript'} />
+            <span className='absolute top-1 right-4 rounded-full px-2 py-1 bg-[#EE81C3] text-gray-50 font-medium'>{codeJs ? 'JavaScript' : 'TypeScript'}</span>
+            <Highligter codeString={codeJs || codeTs} language={codeJs ? 'javascript' : 'typescript'} />
             {codeJs && <ButtonCopyClipboard code={codeJs} />}
           </div>
         </div>
