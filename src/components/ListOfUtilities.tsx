@@ -2,7 +2,7 @@ import { useGetRangeUtilities } from '@/hooks/useGetRangeUtilities'
 import { Utility } from '@/components/Utility'
 
 export async function ListOfUtilities () {
-  const listUtilities = await useGetRangeUtilities({ limit: 10 })
+  const listUtilities = await useGetRangeUtilities({ limit: 5 })
 
   if (listUtilities === null) return null
 
