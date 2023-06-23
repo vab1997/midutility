@@ -8,7 +8,7 @@ import { Loading } from '@/components/icons/Loading'
 import { toast } from 'sonner'
 import { createUtilityHtmlCssJs } from '@/services/clientService'
 
-export function FormRedesing () {
+export function FormUtilityWeb () {
   const [codeHtml, setCodeHtml] = useState<string>('')
   const [codeCss, setCodeCss] = useState<string>('')
   const [codeJs, setCodeJs] = useState<string>('')
