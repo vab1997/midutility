@@ -22,7 +22,7 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
   const monaco = useMonaco()
 
   useEffect(() => {
-    if (monaco != null) {
+    if (monaco !== null) {
       monaco.editor.defineTheme('custom', {
         base: 'vs-dark',
         inherit: true,

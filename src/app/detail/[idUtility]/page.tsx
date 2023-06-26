@@ -24,7 +24,7 @@ export default async function DetailUtility ({ params }: { params: { idUtility: 
         <div className='flex flex-col items-center justify-center gap-4 w-full'>
           <header className='flex flex-col gap-4 px-2 py-2 w-full'>
             <div className='flex flex-col gap-4 w-full'>
-              <h2 className='text-6xl text-[#EE81C3] font-bold'>{title}</h2>
+              <h2 className='text-6xl text-[#EE81C3] font-bold uppercase'>{title}</h2>
               <p className='text-gray-50 text-xl'>{description}</p>
             </div>
             <div className='flex items-center justify-between w-full mt-2'>
