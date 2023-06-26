@@ -18,14 +18,14 @@ const randomColor = () => COLORS_ARTICLES[Math.floor(Math.random() * 10) + 1 as 
 
 export function Utility ({ id, title, description }: { title: string, id: string, description: string }) {
   return (
-    <article className={`${randomColor()} flex flex-col rounded-lg gap-2 py-4 px-6 h-full w-1/5`}>
-      <header className='flex items-center justify-between px-2 py-2'>
+    <article className={`${randomColor()} flex flex-col rounded-lg gap-1 py-4 px-6 h-full w-1/5`}>
+      <header className='flex items-center justify-between px-2 py-1'>
         <h2 className='text-[#14151A] text-xl font-medium'>{title}</h2>
         <Link href={`/detail/${id}`}>
           <ArrowUp width={40} height={40} />
         </Link>
       </header>
-      <div className='px-2'>
+      <div className='px-2 mb-4'>
         <p className='text-[#14151A] truncate'>{description}</p>
       </div>
       <footer className='flex items-center justify-end mt-2 px-2 w-full'>
