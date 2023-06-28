@@ -8,7 +8,6 @@ export function HtmlIcon (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElemen
       height='800'
       fill='none'
       viewBox='0 0 32 32'
-      className='w-14 h-14'
       {...props}
     >
       <path fill='#E44D26' d='M6 28 4 3h24l-2 25-10 3-10-3Z' />

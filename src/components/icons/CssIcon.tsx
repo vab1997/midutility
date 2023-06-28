@@ -8,7 +8,6 @@ export function CssIcon (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement
       height='800'
       fill='none'
       viewBox='0 0 32 32'
-      className='w-14 h-14'
       {...props}
     >
       <path fill='#1172B8' d='M6 28 4 3h24l-2 25-10 3-10-3Z' />
