@@ -1,7 +1,9 @@
 export default function ListUtillitiePage () {
   return (
-    <div>
-      <h1>Welcome to ListUtillitiePage!</h1>
-    </div>
+    <section className='flex items-center justify-center w-full'>
+      <div className=''>
+        <h1 className='text-gray-50 font-bold text-6xl'>Details utilities</h1>
+      </div>
+    </section>
   )
 }
