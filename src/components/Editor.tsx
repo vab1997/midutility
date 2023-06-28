@@ -22,7 +22,7 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
   const monaco = useMonaco()
 
   useEffect(() => {
-    if (monaco !== null) {
+    if (monaco) {
       monaco.editor.defineTheme('custom', {
         base: 'vs-dark',
         inherit: true,
@@ -57,8 +57,8 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
         </button>
       )
     }
-    if (lang === 'html') return <HtmlIcon />
-    if (lang === 'css') return <CssIcon />
+    if (lang === 'html') return <HtmlIcon width={60} height={60} />
+    if (lang === 'css') return <CssIcon width={60} height={60} />
   }
 
   return (
@@ -73,7 +73,7 @@ export function EditorMonaco ({ updateValues, lang, isJSX, isHook }: EditorMonac
         defaultLanguage={language}
         defaultValue={DEFAULT_VALUE[ValueLang as keyof typeof DEFAULT_VALUE]}
         className='bg-[#14151A] h-full w-full'
-        theme='vs-dark'
+        theme='custom'
         language={language}
         loading={<Loading width={48} height={48} />}
         onChange={(value: string | undefined) => setCode(value)}
