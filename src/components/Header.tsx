@@ -3,7 +3,7 @@ import { GithubIcon } from './icons/GithubIcon'
 
 export function Header () {
   return (
-    <header className='flex items-center justify-center px-10 py-6 border-b border-b-gray-800 w-full'>
+    <header className='bg-[#14151A]/80 border-b border-b-gray-800 backdrop-blur flex items-center justify-center px-10 py-6 w-full sticky top-0 z-40 '>
       <div className='flex items-center justify-between px-10 max-w-7xl w-full'>
         <div className='flex gap-8 items-center justify-center'>
           <Link href='/'>

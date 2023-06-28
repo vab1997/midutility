@@ -1,15 +1,17 @@
 'use client'
 
-import { Menu, Transition } from '@headlessui/react'
-import Link from 'next/link'
 import { Fragment } from 'react'
+import Link from 'next/link'
+import { ChevronDownIcon } from '@/components/icons/ChevronDown'
+import { Menu, Transition } from '@headlessui/react'
 
 export function SelectUtility () {
   return (
     <Menu as='div' className='inline-block'>
       <div>
-        <Menu.Button className='inline-flex border-2 border-[#EE81C3] w-full justify-center bg-[#EE81C3] px-8 py-4 rounded-lg text-2xl font-medium text-gray-50 focus:outline-none '>
+        <Menu.Button className='inline-flex items-center justify-center gap-1 border-2 border-[#EE81C3] w-full bg-[#EE81C3] px-[17px] py-4 rounded-lg text-2xl font-medium text-gray-50 focus:outline-none '>
           Create new utility
+          <ChevronDownIcon width={24} height={24} />
         </Menu.Button>
       </div>
       <Transition
