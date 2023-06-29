@@ -20,6 +20,20 @@ interface UtilityReact extends Utility {
   codeTs: string
 }
 
+export async function signInWithGitHub () {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github'
+  })
+  console.log(data)
+
+  return { user: data, error }
+}
+
+export async function logoutWithGithub () {
+  const { error } = await supabase.auth.signOut()
+  return { error }
+}
+
 export async function createUtility ({ title, description, useCase }: Utility) {
   const { data } = await supabase.from('utility').insert({ title, description, useCase }).select('id')
   if (!data) return null

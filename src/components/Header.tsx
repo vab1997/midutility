@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { GithubIcon } from './icons/GithubIcon'
+import NavUserOutlet from '@/components/NavUserOutlet'
 
 export function Header () {
   return (
@@ -14,10 +14,7 @@ export function Header () {
           </Link>
         </div>
         <div className='flex item-center justify-center'>
-          <button className='flex items-center justify-center gap-1.5 px-4 py-2 rounded font-medium bg-gray-50'>
-            <GithubIcon width={24} height={24} />
-            Login
-          </button>
+          <NavUserOutlet />
         </div>
       </div>
     </header>
